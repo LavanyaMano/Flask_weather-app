@@ -1,6 +1,6 @@
-# Flask Package
+# Open Weather App
 
-Create a flask app as a package and a run script to actually run the application
+Flask app to get current weather for a city and the forecast.
 
 ## Setup
 * `mkvirtualenv -p python3 flask-package`
@@ -8,3 +8,4 @@ Create a flask app as a package and a run script to actually run the application
 
 ## Run the flask app
 `python run.py`
+
