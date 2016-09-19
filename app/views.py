@@ -1,5 +1,5 @@
 from flask import render_template, request, flash, redirect
-
+import os
 from app import app
 from app.forms import WeatherForm
 from app.open_weather_api import OpenWeatherAPI
@@ -18,7 +18,7 @@ def current_weather():
         country_code = weather_form.country_code.data
 
         try:
-            api = OpenWeatherAPI(app.config["OPEN_WEATHER_API_KEY"], weather_form.units.data)
+            api = OpenWeatherAPI(os.environ['OPEN_WEATHER_API_KEY'], weather_form.units.data)
             weather_item = api.get_current_weather(city, country_code)
         except ValueError as e:
             flash(str(e), "warning")
@@ -36,7 +36,7 @@ def forecast_weather():
         country_code = weather_form.country_code.data
 
         try:
-            api = OpenWeatherAPI(app.config["OPEN_WEATHER_API_KEY"], weather_form.units.data)
+            api = OpenWeatherAPI(os.environ["OPEN_WEATHER_API_KEY"], weather_form.units.data)
             weather_list = api.get_daily_weather(city, country_code)
         except ValueError as e:
             flash(str(e), "warning")
